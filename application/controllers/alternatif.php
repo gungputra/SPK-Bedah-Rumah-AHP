@@ -6,7 +6,7 @@ class Alternatif extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('m_alternatif');
+		$this->load->model('M_alternatif');
 		//Codeigniter : Write Less Do More
 	}
 
@@ -14,7 +14,7 @@ class Alternatif extends CI_Controller {
 	{
 		if ($this->session->userdata('isLogin'))
 		{
-			$data['data']=$this->m_alternatif->get_alternatif();
+			$data['data']=$this->M_alternatif->get_alternatif();
 			$this->load->view('alternatif',$data);
 		}
 		else redirect('login');
@@ -31,20 +31,20 @@ class Alternatif extends CI_Controller {
 
 	function input()
 	{
-		$this->m_alternatif->add();
+		$this->M_alternatif->add();
 		redirect('alternatif/');
 	}
 
 	function hapus($i)
 	{
-		$this->m_alternatif->delete($i);
+		$this->M_alternatif->delete($i);
 
 	}
 
 	function update()
 	{
 		$data=$this->input->post();
-		$this->m_alternatif->update($data);
+		$this->M_alternatif->update($data);
 		redirect('alternatif/');
 	}
 
@@ -52,7 +52,7 @@ class Alternatif extends CI_Controller {
 	{
 		if ($this->session->userdata('isLogin'))
 		{
-			$data['data'] = $this->m_alternatif->get_1_alternatif($i);
+			$data['data'] = $this->M_alternatif->get_1_alternatif($i);
 			$this->load->view('alternatif-edit',$data);
 		}
 		else redirect('login');
@@ -62,7 +62,7 @@ class Alternatif extends CI_Controller {
 	{
 		if ($this->session->userdata('isLogin'))
 		{
-			$data['data'] = $this->m_alternatif->normalisasi();
+			$data['data'] = $this->M_alternatif->normalisasi();
 			$this->load->view('alternatif-normalisasi',$data);
 		}
 		else redirect('login');

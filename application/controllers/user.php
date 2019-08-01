@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class user extends CI_Controller{
+class User extends CI_Controller{
 
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('m_user');
+    $this->load->model('M_user');
     //Codeigniter : Write Less Do More
   }
 
@@ -14,7 +14,7 @@ class user extends CI_Controller{
 	{
 		if ($this->session->userdata('isLogin'))
 		{
-			$data['data']=$this->m_user->get_user();
+			$data['data']=$this->M_user->get_user();
 			$this->load->view('user',$data);
 		}
 		else redirect('login');
@@ -31,20 +31,20 @@ class user extends CI_Controller{
 
   function input()
 	{
-		$this->m_user->add();
+		$this->M_user->add();
 		redirect('user/');
 	}
 
   function hapus($i)
   {
-    $this->m_user->delete($i);
+    $this->M_user->delete($i);
     redirect('user/');
   }
 
   function update()
   {
     $data=$this->input->post();
-    $this->m_user->update($data);
+    $this->M_user->update($data);
     redirect('user/');
   }
 
@@ -52,7 +52,7 @@ class user extends CI_Controller{
   {
     if ($this->session->userdata('isLogin'))
     {
-      $data['data'] = $this->m_user->get_1_user($i);
+      $data['data'] = $this->M_user->get_1_user($i);
       $this->load->view('user-edit',$data);
     }
     else redirect('login');

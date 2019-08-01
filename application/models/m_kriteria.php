@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class m_Kriteria extends CI_Model{
+class M_kriteria extends CI_Model{
 
   public function __construct()
   {

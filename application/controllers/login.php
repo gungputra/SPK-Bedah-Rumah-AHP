@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class login extends CI_Controller{
+class Login extends CI_Controller{
 
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('m_login');
+    $this->load->model('M_login');
     //Codeigniter : Write Less Do More
   }
 
@@ -20,7 +20,7 @@ class login extends CI_Controller{
   {
     $user=$this->input->post('username');
 		$pass=md5($this->input->post('password'));
-		$data=$this->m_login->login($user,$pass);
+		$data=$this->M_login->login($user,$pass);
 		if (is_null($data)) {
 			$data['isLogin']=false;
       redirect('login');
